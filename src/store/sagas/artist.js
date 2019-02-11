@@ -7,8 +7,9 @@ export function* getArtist(action) {
   try {
     const { id } = action.payload;
     const response = yield call(api.get, `lookup?id=${id}`);
+    const { results } = response.data;
 
-    yield put(ArtistActions.getArtistSuccess(response.data.results));
+    yield put(ArtistActions.getArtistSuccess(results[0]));
   } catch (err) {
     console.tron.log(err);
     // yield call(toastr.error, 'Erro', 'Não foi possivel obter a lista de Album');

@@ -14,22 +14,18 @@ import ListMusicStruct from '../ListMusicStruct';
 import { Container, Title, ButtonSpace } from './styles';
 import { Button } from '~/styles/components';
 
-import { Creators as TrackActions } from '~/store/ducks/track';
+import { Creators as SongActions } from '~/store/ducks/song';
+import { Creators as AlbumActions } from '~/store/ducks/album';
 
 class MediaList extends Component {
   static propTypes = {
     getAlbumRequest: PropTypes.func.isRequired,
   };
 
-  componentWillReceiveProps(props) {
-    const { getAlbumRequest } = this.props;
-    if (props.artist.artistId) {
-      getAlbumRequest(props.artist.artistId);
-    }
-  }
+  componentWillMount() {
+    const { getAlbumRequest, artist } = this.props;
 
-  shouldComponentUpdate(newProps) {
-    return newProps.artist.artistId !== '';
+    getAlbumRequest(artist.artistId);
   }
 
   renderList = () => (
@@ -41,7 +37,7 @@ class MediaList extends Component {
         <Grid desktop="65" mobile="100">
 
           <Hidden to="mobile">
-            <Title>Lil Wayner: Next Steps</Title>
+            <Title>Lil Wayne: Next Steps</Title>
             <Button style={ButtonSpace}>
               Listen on
               {' '}
@@ -95,13 +91,14 @@ class MediaList extends Component {
 }
 
 const mapStateToProps = state => ({
-  artist: state.artist,
+  artist: state.artist.data,
   album: state.album,
-  track: state.track,
+  song: state.song,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  ...TrackActions,
+  ...AlbumActions,
+  ...SongActions,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(MediaList);

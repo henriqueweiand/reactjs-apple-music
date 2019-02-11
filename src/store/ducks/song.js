@@ -1,14 +1,14 @@
 export const Types = {
-  GET_REQUEST: 'track/GET_REQUEST',
-  GET_SUCCESS: 'track/GET_SUCCESS',
+  GET_REQUEST: 'song/GET_REQUEST',
+  GET_SUCCESS: 'song/GET_SUCCESS',
 };
 
 const INITIAL_STATE = {
   data: [],
-  loading: false,
+  loading: true,
 };
 
-export default function track(state = INITIAL_STATE, action) {
+export default function song(state = INITIAL_STATE, action) {
   switch (action.type) {
     case Types.GET_REQUEST:
       return { ...state, loading: true };
@@ -20,10 +20,11 @@ export default function track(state = INITIAL_STATE, action) {
 }
 
 export const Creators = {
-  getTrackRequest: () => ({
+  getSongRequest: id => ({
     type: Types.GET_REQUEST,
+    payload: { id },
   }),
-  getTrackSuccess: data => ({
+  getSongSuccess: data => ({
     type: Types.GET_SUCCESS,
     payload: { data },
   }),

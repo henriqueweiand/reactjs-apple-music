@@ -5,7 +5,7 @@ export const Types = {
 
 const INITIAL_STATE = {
   data: [],
-  loading: false,
+  loading: true,
 };
 
 export default function artist(state = INITIAL_STATE, action) {
