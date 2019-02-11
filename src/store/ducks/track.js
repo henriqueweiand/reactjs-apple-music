@@ -1,6 +1,6 @@
 export const Types = {
-  GET_REQUEST: 'album/GET_REQUEST',
-  GET_SUCCESS: 'album/GET_SUCCESS',
+  GET_REQUEST: 'track/GET_REQUEST',
+  GET_SUCCESS: 'track/GET_SUCCESS',
 };
 
 const INITIAL_STATE = {
@@ -8,7 +8,7 @@ const INITIAL_STATE = {
   loading: false,
 };
 
-export default function album(state = INITIAL_STATE, action) {
+export default function track(state = INITIAL_STATE, action) {
   switch (action.type) {
     case Types.GET_REQUEST:
       return { ...state, loading: true };
@@ -20,11 +20,10 @@ export default function album(state = INITIAL_STATE, action) {
 }
 
 export const Creators = {
-  getAlbumRequest: id => ({
+  getTrackRequest: () => ({
     type: Types.GET_REQUEST,
-    payload: { id },
   }),
-  getAlbumSuccess: data => ({
+  getTrackSuccess: data => ({
     type: Types.GET_SUCCESS,
     payload: { data },
   }),
