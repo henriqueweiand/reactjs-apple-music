@@ -49,27 +49,26 @@ export const List = styled.ul`
 export const ItemList = styled.li`
   margin-bottom: 0.5rem;
 
-  ${props => (props.cover
-    ? css`
-        min-width: 150px;
-        flex: 1;
-        padding-top: 100%;
-        background: #000;
-        border-radius: 50%;
-      `
-    : '')}
+  ${props => css`
+    ${props.cover
+      && `
+      min-width: 150px;
+      flex: 1;
+      padding-top: 100%;
+      background: #000;
+      border-radius: 50%;
+    `}
 
-  ${props => (props.title
-    ? css`
-        color: #0a0a0a;
-        text-align: center;
-      `
-    : '')}
+    ${props.songName
+      && `
+      color: #0a0a0a;
+      text-align: center;
+    `}
 
-  ${props => (props.category
-    ? css`
-        color: #8b8b8b;
-        text-align: center;
-      `
-    : '')}
+    ${props.category
+      && `
+      color: #8b8b8b;
+      text-align: center;
+    `}
+  `}
 `;

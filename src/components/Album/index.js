@@ -19,7 +19,7 @@ const Album = () => (
         <Title>Lil Wayner: Next Steps</Title>
       </Grid>
 
-      <Button style={ButtonSpace}>
+      <Button styles={ButtonSpace}>
         Listen on
         {' '}
         <b>Apple Music</b>

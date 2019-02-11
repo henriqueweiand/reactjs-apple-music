@@ -4,7 +4,7 @@ export const Container = styled.div`
   border-top: 2px solid #e6e6e6;
 
   ${props => css`
-    ${props.style && props.style}
+    ${props.styles && props.styles}
   `}
 `;
 

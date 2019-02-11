@@ -4,7 +4,7 @@ import { Label, Value, List } from './styles';
 import Grid from '~/components/Grid';
 
 const ListDataStruct = ({ data }) => (
-  <Grid style={List}>
+  <Grid styles={List}>
     <Label>{data.label}</Label>
     <Value>{data.value}</Value>
   </Grid>

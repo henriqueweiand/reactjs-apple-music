@@ -30,21 +30,24 @@ const About = () => (
           component={ListDataStruct}
           data={[
             {
+              key: 1,
               label: 'Origin',
               value: 'New Orleans, LA',
             },
             {
+              key: 2,
               label: 'Genre',
               value: 'Hip-Hop/Rap',
             },
             {
+              key: 3,
               label: 'Born',
               value: 'Set 27, 1982',
             },
           ]}
         >
           <Hidden to="desktop">
-            <Button style={ButtonSpace}>
+            <Button styles={ButtonSpace}>
               Listen on
               {' '}
               <b>Apple Music</b>
@@ -52,7 +55,7 @@ const About = () => (
           </Hidden>
         </List>
         <Hidden to="desktop">
-          <Bar style={ListSpace} />
+          <Bar styles={ListSpace} />
         </Hidden>
       </Grid>
     </Grid>

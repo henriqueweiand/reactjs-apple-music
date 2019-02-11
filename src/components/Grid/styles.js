@@ -27,6 +27,6 @@ export const Container = styled.div`
     align-items: ${props.alignItems || 'stretch'};
     align-content: ${props.alignContent || 'stretch'};
     flex-wrap: ${props.wrap || 'nowrap'};
-    ${props.style && props.style}
+    ${props.styles && props.styles}
   `}
 `;

@@ -16,7 +16,7 @@ const ListMusicStruct = ({ data }) => (
       justify="space-between"
       alignContent="center"
       alignItems="center"
-      style={List}
+      styles={List}
     >
       <Grid direction="column">
         <Title>{data.title}</Title>

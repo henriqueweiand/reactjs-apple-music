@@ -4,20 +4,20 @@ import { FeaturedArtist, Label, FeaturedArtistList, Item, List, ItemList } from 
 import Grid from '~/components/Grid';
 
 const ListMusicStruct = ({ data }) => (
-  <Grid direction="column" container style={FeaturedArtist}>
+  <Grid direction="column" container styles={FeaturedArtist}>
     <Label>Featured Artists</Label>
 
-    <Grid item container style={FeaturedArtistList}>
+    <Grid item container styles={FeaturedArtistList}>
       <Grid
         container
         direction="column"
         alingItem="center"
         alingContent="center"
-        style={Item}
+        styles={Item}
       >
         <List>
           <ItemList cover />
-          <ItemList title>
+          <ItemList songName>
             Title
           </ItemList>
           <ItemList category>

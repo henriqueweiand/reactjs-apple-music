@@ -11,7 +11,7 @@ export const Button = styled.button`
   cursor: pointer;
 
   ${props => css`
-    ${props.style && props.style}
+    ${props.styles && props.styles}
   `}
 
   @media (max-width: 767.98px) {

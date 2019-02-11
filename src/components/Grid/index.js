@@ -2,6 +2,6 @@ import React from 'react';
 
 import { Container } from './styles';
 
-const Grid = ({ children, ...style }) => <Container {...style}>{children}</Container>;
+const Grid = ({ children, ...styles }) => <Container {...styles}>{children}</Container>;
 
 export default Grid;

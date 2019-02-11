@@ -32,6 +32,9 @@ class Main extends Component {
   }
 
   render() {
+    const { artist } = this.props.artist;
+    console.log(artist);
+
     return (
       <Grid container item direction="column">
         <Header>
@@ -40,18 +43,19 @@ class Main extends Component {
 
         <About />
         <MediaList />
+
         <FeaturedArtist />
       </Grid>
     );
   }
 }
 
-// const mapStateToProps = state => ({
-//   auth: state.auth,
-// });
+const mapStateToProps = state => ({
+  artist: state.artist,
+});
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   ...ArtistActions,
 }, dispatch);
 
-export default connect(null, mapDispatchToProps)(Main);
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
