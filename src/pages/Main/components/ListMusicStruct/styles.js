@@ -9,14 +9,15 @@ export const List = css`
 export const Title = styled.div`
   color: ${colors.secondary};
   font-size: 0.7rem;
+  line-height: 1rem;
 `;
 
 export const Artist = styled.div`
   color: ${colors.default};
+  font-size: 0.7rem;
 `;
 
 export const Cover = styled.div`
-
   img {
     width: 42px;
     height: 42px;
@@ -29,5 +30,5 @@ export const Cover = styled.div`
 
 export const Time = styled.span`
   color: ${colors.secondary};
-  font-size: 12px;
+  font-size: 0.7rem;
 `;

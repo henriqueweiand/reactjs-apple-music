@@ -13,7 +13,7 @@ export default function album(state = INITIAL_STATE, action) {
     case Types.GET_REQUEST:
       return { ...state, loading: true };
     case Types.GET_SUCCESS:
-      return { ...state, data: [...state.data, ...action.payload.data], loading: false };
+      return { ...state, data: action.payload.data, loading: false };
     default:
       return state;
   }
