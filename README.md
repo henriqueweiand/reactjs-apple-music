@@ -1,12 +1,5 @@
 # reactjs-apple-music
 
-**Resultado**
-![alt text](https://i.imgur.com/G3h2tWN.png)
-
-![alt text](https://i.imgur.com/c7u7DGi.png)
-
----
-
 ### Instruções
 
 1. Utilizar **React**;
@@ -32,3 +25,8 @@ As imagens do layout que será convertido estão anexadas a este repositório. V
 * Suporte de Browsers: Chrome e Firefox. Safari e +IE11 é considerado como extra;
 * Alterações no layout são permitidas, desde que tragam um sentido e relevância. É interessante a apresentação de justificativa em caso de alteração.
 
+**Resultado**
+
+![alt text](https://i.imgur.com/G3h2tWN.png)
+
+![alt text](https://i.imgur.com/c7u7DGi.png)
