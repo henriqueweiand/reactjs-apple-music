@@ -1,7 +1,9 @@
 # reactjs-apple-music
 
 **Resultado**
-![alt text](https://i.ibb.co/M6Fvq42/apresentacao.gif)
+![alt text](https://i.imgur.com/G3h2tWN.png)
+
+![alt text](https://i.imgur.com/c7u7DGi.png)
 
 ---
 
