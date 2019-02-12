@@ -37,6 +37,5 @@ export function* getArtist(action) {
     );
   } catch (err) {
     console.tron.log(err);
-    // yield call(toastr.error, 'Erro', 'Não foi possivel obter a lista de Album');
   }
 }

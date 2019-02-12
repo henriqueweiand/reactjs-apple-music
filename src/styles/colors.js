@@ -3,6 +3,7 @@ const colors = {
   danger: '#c04969',
   lighter: '#e3e3e3',
   secondary: '#969698',
+  third: '#dbd9da',
   alternative: '#373737',
   default: '#303030',
   dark: '#101010',

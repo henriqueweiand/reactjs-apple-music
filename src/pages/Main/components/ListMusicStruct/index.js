@@ -8,7 +8,9 @@ import Grid from '~/components/Grid';
 
 const ListMusicStruct = ({ data }) => (
   <Grid container>
-    <Cover />
+    <Cover>
+      <img src={data.artworkUrl30} alt={data.trackName} />
+    </Cover>
 
     <Grid
       container
@@ -20,18 +22,19 @@ const ListMusicStruct = ({ data }) => (
       styles={List}
     >
       <Grid direction="column">
-        <Title>{data.title}</Title>
-        <Artist>{data.artist}</Artist>
+        <Title>{data.trackName}</Title>
+        <Artist>{data.artistName}</Artist>
       </Grid>
-      <Time>{data.time}</Time>
+      <Time>{data.trackTimeMillis}</Time>
     </Grid>
   </Grid>
 );
 
 ListMusicStruct.propTypes = {
   data: PropTypes.shape({
-    title: PropTypes.string,
-    artist: PropTypes.string,
+    trackName: PropTypes.string,
+    artistName: PropTypes.string,
+    trackTimeMillis: PropTypes.number,
   }).isRequired,
 };
 

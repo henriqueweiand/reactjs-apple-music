@@ -16,12 +16,15 @@ export const Artist = styled.div`
 `;
 
 export const Cover = styled.div`
-  background: #000;
-  width: 42px;
-  height: 42px;
-  margin-right: 0.5rem;
-  border-radius: 5px;
-  margin-top: 4px;
+
+  img {
+    width: 42px;
+    height: 42px;
+    border: 1px solid ${colors.third};
+    margin-right: 0.5rem;
+    border-radius: 5px;
+    margin-top: 4px;
+  }
 `;
 
 export const Time = styled.span`
