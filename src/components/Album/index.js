@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Hidden from '~/components/Hidden';
 import { Button } from '~/styles/components';
@@ -6,7 +7,7 @@ import Grid from '~/components/Grid';
 
 import { Item, Cover, Title, ButtonSpace } from './styles';
 
-const Album = () => (
+const Album = ({ cover, title, qtdSongs, description }) => (
   <Grid
     container
     direction="column"
@@ -14,9 +15,12 @@ const Album = () => (
     <Hidden to="desktop">
       <Grid
         container
+        item
       >
-        <Cover>Capa</Cover>
-        <Title>Lil Wayner: Next Steps</Title>
+        <Cover>
+          <img src={cover} alt={title} />
+        </Cover>
+        <Title>{title}</Title>
       </Grid>
 
       <Button styles={ButtonSpace}>
@@ -29,22 +33,34 @@ const Album = () => (
       <Item notes>Editor`s notes</Item>
 
       <Item description>
-        When Lil Wayne debuted as a 12-year-old kid on the B.G.’z 1995 album True Story, it wasn’t
-      exactly clear that he’d become one of the best rappers of his generation.
+        {description}
       </Item>
     </Hidden>
 
     <Hidden to="mobile">
-      <Item cover>Album</Item>
-      <Item song>22 Songs </Item>
+      <Item>
+        <img src={cover} alt={title} />
+      </Item>
+      <Item song>{qtdSongs} Songs</Item>
       <Item bar />
       <Item notes>Editor note`s</Item>
       <Item description>
-        When Lil Wayne debuted as a 12-year-old kid on the B.G.’z 1995 album True Story, it wasn’t
-    exactly clear that he’d become one of the best rappers of his generation.
+        {description}
       </Item>
     </Hidden>
   </Grid>
 );
+
+Album.propTypes = {
+  cover: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  qtdSongs: PropTypes.number,
+  description: PropTypes.string,
+};
+
+Album.defaultProps = {
+  qtdSongs: 0,
+  description: 'is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+};
 
 export default Album;

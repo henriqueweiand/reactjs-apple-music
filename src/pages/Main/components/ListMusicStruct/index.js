@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import {
   Title, Artist, List, Cover, Time,
@@ -26,5 +27,12 @@ const ListMusicStruct = ({ data }) => (
     </Grid>
   </Grid>
 );
+
+ListMusicStruct.propTypes = {
+  data: PropTypes.shape({
+    title: PropTypes.string,
+    artist: PropTypes.string,
+  }).isRequired,
+};
 
 export default ListMusicStruct;

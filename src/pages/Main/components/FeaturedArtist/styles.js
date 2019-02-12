@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { metrics, colors } from '~/styles';
 
-export const FeaturedArtist = css`
+export const FeaturedArtistContent = css`
   @media (min-width: 767.98px) {
     margin: ${metrics.medium} auto 0;
     width: ${metrics.smallWidthContainer};
@@ -49,17 +49,14 @@ export const List = styled.ul`
 export const ItemList = styled.li`
   margin-bottom: 0.5rem;
 
-  ${props => css`
-    ${props.cover
-      && `
-      min-width: 150px;
-      flex: 1;
-      padding-top: 100%;
-      background: #000;
-      border-radius: 50%;
-    `}
+  img {
+    width: 150px;
+    flex: 1;
+    border-radius: 50%;
+  }
 
-    ${props.songName
+  ${props => css`
+    ${props.autorName
       && `
       color: #0a0a0a;
       text-align: center;

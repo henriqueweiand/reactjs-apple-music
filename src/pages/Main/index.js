@@ -14,6 +14,7 @@ import imageSrc from '~/images/lilwayne.png';
 import { Image } from './styles';
 
 import { Creators as ArtistActions } from '~/store/ducks/artist';
+import { Creators as AlbumActions } from '~/store/ducks/album';
 
 class Main extends Component {
   state = {
@@ -21,19 +22,21 @@ class Main extends Component {
   }
 
   static propTypes = {
+    loading: PropTypes.bool.isRequired,
     getArtistRequest: PropTypes.func.isRequired,
+    getAlbumRequest: PropTypes.func.isRequired,
   };
 
-  componentDidMount() {
-    const { getArtistRequest } = this.props;
+  componentWillMount() {
+    const { getArtistRequest, getAlbumRequest } = this.props;
     const { id } = this.state;
 
     getArtistRequest(id);
+    getAlbumRequest(id);
   }
 
   render() {
-    const { artist } = this.props.artist;
-    console.log(artist);
+    const { loading } = this.props;
 
     return (
       <Grid container item direction="column">
@@ -43,7 +46,6 @@ class Main extends Component {
 
         <About />
         <MediaList />
-
         <FeaturedArtist />
       </Grid>
     );
@@ -51,11 +53,12 @@ class Main extends Component {
 }
 
 const mapStateToProps = state => ({
-  artist: state.artist,
+  loading: state.album.loading,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   ...ArtistActions,
+  ...AlbumActions,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

@@ -1,5 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
+import { connect } from 'react-redux';
+
+import Loading from '~/components/Loading';
 import Description from '~/components/Description';
 import Grid from '~/components/Grid';
 import List from '~/components/List';
@@ -11,9 +15,15 @@ import ListDataStruct from '../ListDataStruct';
 import { Container, Title, ButtonSpace, ListSpace } from './styles';
 import { Button } from '~/styles/components';
 
-const About = () => (
+const About = ({ artist: { data, loading } }) => (
   <Container>
-    <Title>Lil Wayne</Title>
+    <Title>
+      {
+        loading
+          ? <Loading />
+          : data.artistName
+      }
+    </Title>
 
     <Grid
       container
@@ -23,37 +33,32 @@ const About = () => (
       wrap="wrap"
     >
       <Grid desktop="65" mobile="100">
-        <Description />
+        {
+          loading
+            ? <Loading />
+            : <Description data={data.description} />
+        }
       </Grid>
       <Grid desktop="30" mobile="100">
-        <List
-          component={ListDataStruct}
-          data={[
-            {
-              key: 1,
-              label: 'Origin',
-              value: 'New Orleans, LA',
-            },
-            {
-              key: 2,
-              label: 'Genre',
-              value: 'Hip-Hop/Rap',
-            },
-            {
-              key: 3,
-              label: 'Born',
-              value: 'Set 27, 1982',
-            },
-          ]}
-        >
-          <Hidden to="desktop">
-            <Button styles={ButtonSpace}>
-              Listen on
-              {' '}
-              <b>Apple Music</b>
-            </Button>
-          </Hidden>
-        </List>
+        {
+          loading
+            ? <Loading />
+            : (
+              <List
+                component={ListDataStruct}
+                data={data.dataList}
+              >
+                <Hidden to="desktop">
+                  <Button styles={ButtonSpace}>
+                    Listen on
+                    {' '}
+                    <b>Apple Music</b>
+                  </Button>
+                </Hidden>
+              </List>
+            )
+        }
+
         <Hidden to="desktop">
           <Bar styles={ListSpace} />
         </Hidden>
@@ -62,4 +67,15 @@ const About = () => (
   </Container>
 );
 
-export default About;
+About.propTypes = {
+  artist: PropTypes.shape({
+    data: PropTypes.shape({}),
+    loading: PropTypes.bool,
+  }).isRequired,
+};
+
+const mapStateToProps = state => ({
+  artist: state.artist,
+});
+
+export default connect(mapStateToProps)(About);

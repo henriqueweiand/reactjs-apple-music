@@ -4,15 +4,12 @@ import { metrics, colors } from '~/styles';
 export const Item = styled.div`
   font-size: 1rem;
   margin: 1rem 0;
-  ${props => (props.cover
-    ? css`
-          width: 100%;
-          padding-top: 100%;
-          background: #000;
-          border-radius: 5px;
-          margin: 0 0 1rem 0;
-        `
-    : '')}
+
+  img {
+    width: 100%;
+    border-radius: 5px;
+    margin: 0 0 1rem 0;
+  }
 
 ${props => (props.song
     ? css`
@@ -63,11 +60,12 @@ ${props => (props.description
 `;
 
 export const Cover = styled.div`
-  width: 30%;
-  padding-top: 25%;
-  background: #000;
-  border-radius: 5px;
+  min-width: 30%;
   margin-right: 1.5rem;
+
+  img {
+    border-radius: 5px;
+  }
 `;
 
 export const Title = styled.h2``;

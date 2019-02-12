@@ -4,7 +4,7 @@ export const Types = {
 };
 
 const INITIAL_STATE = {
-  data: [],
+  data: {},
   loading: true,
 };
 
@@ -13,7 +13,7 @@ export default function artist(state = INITIAL_STATE, action) {
     case Types.GET_REQUEST:
       return { ...state, loading: true };
     case Types.GET_SUCCESS:
-      return { data: action.payload.data, loading: false };
+      return { ...state, data: action.payload.data, loading: false };
     default:
       return state;
   }

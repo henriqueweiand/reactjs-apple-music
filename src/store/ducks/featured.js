@@ -1,6 +1,6 @@
 export const Types = {
-  GET_REQUEST: 'song/GET_REQUEST',
-  GET_SUCCESS: 'song/GET_SUCCESS',
+  GET_REQUEST: 'featured/GET_REQUEST',
+  GET_SUCCESS: 'featured/GET_SUCCESS',
 };
 
 const INITIAL_STATE = {
@@ -8,23 +8,22 @@ const INITIAL_STATE = {
   loading: true,
 };
 
-export default function song(state = INITIAL_STATE, action) {
+export default function featured(state = INITIAL_STATE, action) {
   switch (action.type) {
     case Types.GET_REQUEST:
       return { ...state, loading: true };
     case Types.GET_SUCCESS:
-      return { data: action.payload.data || [], loading: false };
+      return { ...state, data: action.payload.data, loading: false };
     default:
       return state;
   }
 }
 
 export const Creators = {
-  getSongRequest: id => ({
+  getFeaturedRequest: () => ({
     type: Types.GET_REQUEST,
-    payload: { id },
   }),
-  getSongSuccess: data => ({
+  getFeaturedSuccess: data => ({
     type: Types.GET_SUCCESS,
     payload: { data },
   }),

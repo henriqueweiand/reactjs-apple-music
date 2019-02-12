@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 import Grid from '~/components/Grid';
 import Album from '~/components/Album';
@@ -13,30 +12,23 @@ import ListMusicStruct from '../ListMusicStruct';
 import { Container, Title, ButtonSpace } from './styles';
 import { Button } from '~/styles/components';
 
-import { Creators as AlbumActions } from '~/store/ducks/album';
-import { Creators as SongActions } from '~/store/ducks/song';
-
 class MediaList extends Component {
-  componentWillMount() {
-    const { artistId, getAlbumRequest } = this.props;
-    getAlbumRequest(artistId);
-  }
-
-  render() {
+  handleAlbum = () => {
     const { album } = this.props;
 
-    return (
-      <Container>
+    return album.map(item => (
+      <Container key={item.collectionId}>
         <Grid container direction="row" justify="space-between" wrap="wrap">
           <Grid desktop="30" mobile="100">
-            {
-              album.loading ? 'Carregando' : <Album />
-            }
+            <Album
+              cover={item.artworkUrl100}
+              title={item.collectionName}
+              qtdSongs={12}
+            />
           </Grid>
           <Grid desktop="65" mobile="100">
-
             <Hidden to="mobile">
-              <Title>Lil Wayner: Next Steps</Title>
+              <Title>{item.collectionName}</Title>
               <Button styles={ButtonSpace}>
                 Listen on
                 {' '}
@@ -76,18 +68,20 @@ class MediaList extends Component {
           </Grid>
         </Grid>
       </Container>
+    ));
+  }
+
+  render() {
+    return (
+      <Fragment>
+        {this.handleAlbum()}
+      </Fragment>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  album: state.album,
-  song: state.song,
+  album: state.album.data,
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-  ...AlbumActions,
-  ...SongActions,
-}, dispatch);
-
-export default connect(mapStateToProps, mapDispatchToProps)(MediaList);
+export default connect(mapStateToProps)(MediaList);

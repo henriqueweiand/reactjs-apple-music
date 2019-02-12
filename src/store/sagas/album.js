@@ -6,10 +6,12 @@ import { Creators as AlbumActions } from '~/store/ducks/album';
 export function* getAlbum(action) {
   try {
     const { id } = action.payload;
-    const response = yield call(api.get, `lookup?id=${id}&entity=album&limit=2`);
+    const response = yield call(api.get, `lookup?id=${id}&entity=album&limit=2`); // fix limit 2 para nao ficar uma tela muito grande
     const { results } = response.data;
 
-    yield put(AlbumActions.getAlbumSuccess(results));
+    yield put(
+      AlbumActions.getAlbumSuccess(results.filter(item => item.wrapperType === 'collection')),
+    );
   } catch (err) {
     console.tron.log(err);
     // yield call(toastr.error, 'Erro', 'Não foi possivel obter a lista de Album');
