@@ -1,4 +1,4 @@
-import { all, takeLatest } from 'redux-saga/effects';
+import { all, takeLatest, takeEvery } from 'redux-saga/effects';
 
 import { Types as ArtistTypes } from '~/store/ducks/artist';
 import { Types as AlbumsTypes } from '~/store/ducks/album';
@@ -14,7 +14,7 @@ export default function* rootSaga() {
   yield all([
     takeLatest(ArtistTypes.GET_REQUEST, getArtist),
     takeLatest(AlbumsTypes.GET_REQUEST, getAlbum),
-    takeLatest(SongTypes.GET_REQUEST, getSong),
     takeLatest(FeaturedTypes.GET_REQUEST, getFeatured),
+    takeEvery(SongTypes.GET_REQUEST, getSong),
   ]);
 }

@@ -22,7 +22,6 @@ class Main extends Component {
   }
 
   static propTypes = {
-    loading: PropTypes.bool.isRequired,
     getArtistRequest: PropTypes.func.isRequired,
     getAlbumRequest: PropTypes.func.isRequired,
   };
@@ -36,8 +35,6 @@ class Main extends Component {
   }
 
   render() {
-    const { loading } = this.props;
-
     return (
       <Grid container item direction="column">
         <Header>

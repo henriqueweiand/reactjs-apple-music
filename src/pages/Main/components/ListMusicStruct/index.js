@@ -7,13 +7,13 @@ import {
 import Grid from '~/components/Grid';
 
 const ListMusicStruct = ({ data }) => {
-  const TimeMinutes = String(data.trackTimeMillis / 60000).substring(0,4);
+  const TimeMinutes = String(data.trackTimeMillis / 60000).substring(0, 4);
   return (
     <Grid container>
       <Cover>
         <img src={data.artworkUrl30} alt={data.trackName} />
       </Cover>
-  
+
       <Grid
         container
         item
